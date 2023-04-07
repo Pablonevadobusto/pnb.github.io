@@ -144,6 +144,7 @@ section {
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    /* position: relative; */
     width: 4rem;
     height: 4rem;
     background: transparent;
