@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -40,7 +40,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 2rem 7%;
+    padding: 2rem 3%;
     background: transparent;
     display: flex;
     align-items: center;
@@ -63,10 +63,10 @@ body {
 
 .navbar a {
     position: relative;
-    font-size: 2.4rem;
+    font-size: 2.25rem;
     color: var(--white-color);
     font-weight: 500;
-    margin-right: 3.5rem;
+    margin-right: 2.5rem;
 }
 
 .header.sticky .navbar a {
@@ -281,6 +281,9 @@ section {
     width: 35%;
     pointer-events: none;
 }
+.home-img:hover {
+    transform: scale(1.1);
+}
 
 span {
     color: var(--main-color);
@@ -322,7 +325,7 @@ span {
 }
 
 .experience h2 {
-    margin-bottom: 5rem;
+    margin-bottom: 10rem;
 }
 
 .experience .experience-container {
@@ -376,7 +379,7 @@ span {
 .portfolio h2 {
     margin-bottom: 4rem;
 }
-
+/*
 .portfolio .portfolio-container {
     display:  grid;
     grid-template-columns: repeat(3, 1fr);
@@ -400,8 +403,65 @@ span {
 .portfolio-box:hover img {
     transform: scale(1.1);
 }
+*/
 
-.portfolio-box .portfolio-layer {
+.portfolio-container {
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 2px;
+}
+
+.card {
+    position: relative;
+    background: #fff;
+    max-width: 400px;
+    width: 400px;
+    height: auto;
+    margin: 50px;
+    box-shadow: 0 5px 25px rgb(1 1 1 / 20%);
+    border-radius: 2rem;
+    overflow: hidden;
+}
+
+.card-image {
+    max-height: 265px;
+}
+
+.card-image img {
+    max-width: 100%;
+    height: auto;
+    transition: .5s ease;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+    transition: .5s ease;
+}
+
+.card-info {
+    position: relative;
+    color: #222;
+    padding: 0px 20px 5px;
+}
+
+.card-info h3 {
+    font-size: 1.6em;
+    font-weight: 800;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.card .portfolio-layer {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -414,17 +474,13 @@ span {
     align-items: center;
     flex-direction: column;
     text-align: center;
-    padding: 0 4rem;
+    padding: 0 2rem;
     opacity: 0;
     transition: .5s ease;
 }
 
-.portfolio-box:hover .portfolio-layer {
+.card:hover .portfolio-layer {
     opacity: 1;
-}
-
-.portfolio-layer h4 {
-    font-size: 3rem;
 }
 
 .portfolio-layer p {
@@ -446,6 +502,7 @@ span {
     font-size: 2rem;
     color: #333;
 }
+
 
 .pagination {
     text-align: center;
@@ -474,11 +531,11 @@ span {
     transition: 0.3s ease;
 }
 
-.previous-page:hover {
+.previous-page:hover{
     transform: translateX(-5px);
 }
 
-.next-page:hover {
+.next-page:hover{
     transform: translateX(5px);
 }
 
@@ -489,12 +546,40 @@ span {
     cursor: pointer;
 }
 
-.activee {
+.prompt {
     background: var(--main-color);
 }
 
 .disable {
     background: #ccc;
+}
+
+.analysis {
+    padding-bottom: 1rem;
+}
+
+.analysis h2 {
+    margin-bottom: 2rem;
+}
+
+.analysis h3 {
+    font-size: 3.5rem;
+}
+
+.analysis-container {
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.analysis .card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 2px;
 }
 
 .contact h2 {
@@ -583,7 +668,7 @@ span {
     .home .profession-container {
         top: 50%;
         height: 110rem;
-        right: -10rem;
+        right: -5rem;
     }
 
     .home .profession-container .profession-box {
@@ -593,6 +678,11 @@ span {
 
     .home .profession-container .overlay {
         right: -9rem;
+    }
+
+    .experience {
+        min-height: auto;
+        padding-bottom: 35rem;
     }
 }
 
@@ -609,7 +699,7 @@ span {
         top: 50%;
         width: 968px;
         height: 968px;
-        right: -16rem;
+        right: -3rem;
     }
 
     .home .profession-container .profession-box {
@@ -622,7 +712,7 @@ span {
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1320px) {
     .navbar a:nth-child(1),
     .navbar a:nth-child(2) {
         color: var(--main-color);
@@ -639,6 +729,7 @@ span {
 
     .home .profession-container {
         top: 50%;
+        right: -1rem;
         /*width: 968px;
         height: 968px;*/
     }
@@ -656,21 +747,24 @@ span {
         display: none;
     }
 
-    .experience,
-    .portfolio {
-        padding-bottom: 7rem;
+    .experience {
+        padding-bottom: 30rem;
     }
 
-    .contact {
-        min-height: auto;
+    .portfolio {
+        padding-bottom: 17rem;
     }
+
+    .contact h2 {
+        margin-bottom: 1rem;
+    }    
 
     .footer {
-        padding: 2rem 3%;
+        padding: 1rem 3%;
     }
 }
 
-@media (max-width: 875px) {
+@media (max-width: 990px) {
     #menu-icon {
         display: block;
     }
@@ -816,6 +910,10 @@ span {
     .portfolio .portfolio-container {
         grid-template-columns: repeat(2,1fr);
     }
+    
+    .contact h2 {
+        margin-bottom: 1rem;
+    }    
 }
 
 @media (max-width: 617px) {

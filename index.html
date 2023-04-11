@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Portfolio Website Design | Codehal</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" charset="UTF-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" charset="utf-8"></script>
 
     <!-- box icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -18,6 +18,7 @@
 
 <body>
 
+
     <!-- header design -->
     <header class="header">
         <a href="#" class="logo">Portfolio.</a>
@@ -26,7 +27,8 @@
             <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
             <a href="#experience">Experience</a>
-            <a href="#portfolio">Portfolio</a>
+            <a href="#portfolio">Data Science</a>
+            <a href="#analysis">Data Analysis</a>
             <a href="#contact">Contact</a>
         </nav>
         <div class="bx bx-moon" id="darkMode-icon"></div>
@@ -93,7 +95,6 @@
 			<p>Therefore, I am a Data Analyst and Graduate Data Scientist that is passionate about working with organisations that want to make data-driven decisions; from getting valuable insights from raw data and make it visual and usable for the audience to deploy interactive applications that run Machine Learning models into production.</p>
 			<p>Do you want to work together? Please reach out to me by any of the means of contact.</p>
             <div class="image"><img src="images/signature.png" alt="" width="300" /></div>
-            <a href="#" class="btn">Read more</a>
         </div>
     </section>
 
@@ -103,22 +104,24 @@
 
         <div class="experience-container">
             <div class="experience-box">
-                <i class='bx bxs-data' ></i>
-                <h3>Data Analyst</h3>
-                <p>description...</p>
-                <a href="#" class="btn">Read More</a>
+                <i class='bx bxl-python' ></i>
+                <h3>Data Science</h3>
+                <p>It encompasses a range of techniques and methods, including machine learning, statistical modeling, data visualization, and data mining. It involves working with both structured and unstructured data, such as text, images, and video.It involves collecting, cleaning, processing, and analyzing large volumes of data, with the goal of identifying patterns, trends, and relationships that can be used to make informed decisions.</p>
+                <a href="#portfolio" class="btn">Read More</a>
             </div>
             <div class="experience-box">
                 <i class='bx bxs-bar-chart-alt-2' ></i>
                 <h3>Business Intelligence</h3>
-                <p>description...</p>
-                <a href="#" class="btn">Read More</a>
+                <p>It is a process of collecting, analyzing, and presenting data in order to help organizations make better business decisions. It involves a variety of techniques and technologies, including data mining, data warehousing, and data visualization.
+
+                    BI typically involves gathering data from a range of sources, such as internal company systems, customer data, and external market data.</p>
+                <a href="#analysis" class="btn">Read More</a>
             </div>
             <div class="experience-box">
-                <i class='bx bxl-python' ></i>
-                <h3>Data Science</h3>
-                <p>description...</p>
-                <a href="#" class="btn">Read More</a>
+                <i class='bx bxs-data' ></i>
+                <h3>Data Analysis</h3>
+                <p>It is the process of inspecting, cleaning, transforming, and modeling data in order to discover useful information, draw conclusions, and support decision-making. It involves a variety of techniques, including statistical analysis, machine learning, data mining, and visualization.The purpose of data analysis is to uncover patterns and insights from data that can be used to inform business decisions, identify opportunities for improvement, and solve problems. </p>
+                <a href="#analysis" class="btn">Read More</a>
             </div>
         </div>
     </section>
@@ -128,101 +131,113 @@
         <h2 class="heading">Latest <span>Projects</span></h2>
 
         <div class="portfolio-container">
-            <div class="portfolio-box">
-                <img src="images/championsleagueimage.jpg" alt="">
-
-                <div class="portfolio-layer">
-                    <h4>Champions League winner prediction</h4>
-                    <p>This projects consist of predicting the winner of UEFA Champions League using KNN and Logistic Regression models</p>
-                    <div class="div">
-                        <a style="margin: 0 1rem 0 0";href="https://github.com/Pablonevadobusto/ChampionsLeague" target="_blank"><i class='bx bx-link-external'></i></a>
-                        <a href="https://pablonevadobusto-championsleague-championsleague-app-mjj7qa.streamlit.app/"target="_blank"><i class='bx bx-window-alt'></i></a>
+            <div class="card-content">
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Champions League winner prediction</h3>
+                    </div>  
+                    <div class="card-image"><img src="images/championsleagueimage.jpg" alt=""></div>
+                    <div class="portfolio-layer">
+                        <p>This projects consist of predicting the winner of UEFA Champions League using KNN and Logistic Regression models</p>
+                        <div class="div">
+                            <a style="margin: 0 1rem 0 0"href="https://github.com/Pablonevadobusto/ChampionsLeague" target="_blank"><i class='bx bx-link-external'></i></a>
+                            <a href="https://pablonevadobusto-championsleague-championsleague-app-mjj7qa.streamlit.app/"target="_blank"><i class='bx bx-window-alt'></i></a>
+                        </div>
+                            
                     </div>
                     
                 </div>
-            </div>
-            <div class="portfolio-box">
-                <img src="images/customersegment.png" alt="">
-
-                <div class="portfolio-layer">
-                    <h4>Customer segmentation with K-means clustering</h4>
-                    <p>Customer segmentation using an unsupervised technique, K-means Clustering</p>
-                    <a href="https://github.com/Pablonevadobusto/Customer-Segmentation" target="_blank"><i class='bx bx-link-external'></i></a>
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Customer segmentation with K-means</h3>
+                    </div>
+                    <div class="card-image"><img src="images/customersegment.png" alt=""></div>
+                    <div class="portfolio-layer">
+                        <p>Customer segmentation using an unsupervised technique, K-means Clustering</p>
+                        <a href="https://github.com/Pablonevadobusto/Customer-Segmentation" target="_blank"><i class='bx bx-link-external'></i></a>
+                    </div>  
                 </div>
-            </div>
-            <div class="portfolio-box">
-                <img src="images/mushroom.jpg" alt="">
-
-                <div class="portfolio-layer">
-                    <h4>Poisonous/Edible Mushroom prediction</h4>
-                    <p>Poisonous or edible Mushrooms prediction using Logistic Regression and Naive Bayes</p>
-                    <div class="div">
-                        <a style="margin: 0 1rem 0 0";href="https://github.com/Pablonevadobusto/Poisonous-Mushrooms" target="_blank"><i class='bx bx-link-external'></i></a>
-                        <a href="https://pablonevadobusto-poisonous-mushroo-poisonousmushroom-app-rkk6zv.streamlit.app/"target="_blank"><i class='bx bx-window-alt'></i></a>
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Poisonous/Edible Mushroom prediction</h3>
+                    </div>
+                    <div class="card-image"><img src="images/mushroom.jpg" alt=""></div>
+                    <div class="portfolio-layer">
+                        <p>Poisonous or edible Mushrooms prediction using Logistic Regression and Naive Bayes</p>
+                        <div class="div">
+                            <a style="margin: 0 1rem 0 0";href="https://github.com/Pablonevadobusto/Poisonous-Mushrooms" target="_blank"><i class='bx bx-link-external'></i></a>
+                            <a href="https://pablonevadobusto-poisonous-mushroo-poisonousmushroom-app-rkk6zv.streamlit.app/"target="_blank"><i class='bx bx-window-alt'></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="portfolio-box">
-                <img src="images/heartfailure.jpg" alt="">
-
-                <div class="portfolio-layer">
-                    <h4>Heart Failure prediction</h4>
-                    <p>Heart Failure prediction using Artificial Neural Networks</p>
-                    <div class="div">
-                        <a style="margin: 0 1rem 0 0";href="https://github.com/Pablonevadobusto/Heart-Failure" target="_blank"><i class='bx bx-link-external'></i></a>
-                        <a href="https://pablonevadobusto-heart-failure-heart-app-ann-rg7664.streamlit.app/"target="_blank"><i class='bx bx-window-alt'></i></a>
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Heart Failure prediction</h3>
+                    </div>
+                    <div class="card-image"><img src="images/heartfailure.jpg" alt=""></div>
+                    <div class="portfolio-layer">
+                        <p>Heart Failure prediction using Artificial Neural Networks</p>
+                        <div class="div">
+                            <a style="margin: 0 1rem 0 0";href="https://github.com/Pablonevadobusto/Heart-Failure" target="_blank"><i class='bx bx-link-external'></i></a>
+                            <a href="https://pablonevadobusto-heart-failure-heart-app-ann-rg7664.streamlit.app/"target="_blank"><i class='bx bx-window-alt'></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="portfolio-box">
-                <img src="images/taxiout.jpg" alt="">
-
-                <div class="portfolio-layer">
-                    <h4>Flight taxi-out</h4>
-                    <p>Flight Taxi-out prediction using Linear Regression model</p>
-                    <a href="https://github.com/Pablonevadobusto/LinearRegression" target="_blank"><i class='bx bx-link-external'></i></a>
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Flight taxi-out</h3>
+                    </div>
+                    <div class="card-image"><img src="images/taxiout.jpg" alt=""></div>
+                    <div class="portfolio-layer">
+                        <p>Flight Taxi-out prediction using Linear Regression model</p>
+                        <a href="https://github.com/Pablonevadobusto/LinearRegression" target="_blank"><i class='bx bx-link-external'></i></a>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-box">
-                <img src="images/visualisation.jpg" alt="">
-
-                <div class="portfolio-layer">
-                    <h4>Earthquake Data Analysis</h4>
-                    <p>This projects consist of analysing the correlation of the different features involved in an Earthquake</p>
-                    <a href="https://github.com/Pablonevadobusto/DataVisualisation" target="_blank"><i class='bx bx-link-external'></i></a>
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Earthquake Data Analysis</h3>
+                    </div>
+                    <div class="card-image"><img src="images/visualisation.jpg" alt=""></div>
+                    <div class="portfolio-layer">
+                        <p>This projects consist of analysing the correlation of the different features involved in an Earthquake</p>
+                        <a href="https://github.com/Pablonevadobusto/DataVisualisation" target="_blank"><i class='bx bx-link-external'></i></a>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-box">
-                <img src="images/textBasedAdventure.jpg" alt="">
-
-                <div class="portfolio-layer">
-                    <h4>Text Based Adventure Game</h4>
-                    <p>Little game leading into different rooms or scenarios according to the input made by the user. All done based on text</p>
-                    <a href="https://github.com/Pablonevadobusto/TextBasedAdventure" target="_blank"><i class='bx bx-link-external'></i></a>
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Text Based Adventure Game</h3>
+                    </div>
+                    <div class="card-image"><img src="images/textBasedAdventure.jpg" alt=""></div>
+                    <div class="portfolio-layer">
+                        <p>Little game leading into different rooms or scenarios according to the input made by the user. All done based on text</p>
+                        <a href="https://github.com/Pablonevadobusto/TextBasedAdventure" target="_blank"><i class='bx bx-link-external'></i></a>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-box">
-                <img src="images/dicerolling.png" alt="">
-
-                <div class="portfolio-layer">
-                    <h4>Dice Rolling simulator</h4>
-                    <p>Python program in which the user rolls a die to return a random number between the delimiters the user inputs</p>
-                    <a href="https://github.com/Pablonevadobusto/DiceRollingSimulator" target="_blank"><i class='bx bx-link-external'></i></a>
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Dice Rolling simulator</h3>
+                    </div>
+                    <div class="card-image"><img src="images/dicerolling.png" alt=""></div>
+                    <div class="portfolio-layer">
+                        <p>Python program in which the user rolls a die to return a random number between the delimiters the user inputs</p>
+                        <a href="https://github.com/Pablonevadobusto/DiceRollingSimulator" target="_blank"><i class='bx bx-link-external'></i></a>
+                    </div>
                 </div>
+            </div>       
+
+        
+            <div class="pagination">
+                <!-- <li class="page-item previous-page disable"><a class="page-link" href="#">Prev</a></li> 
+                <li class="page-item current-page prompt"><a class="page-link" href="#">1</a></li> 
+                <li class="page-item dots"><a class="page-link" href="#">...</a></li> 
+                <li class="page-item current-page"><a class="page-link" href="#">5</a></li> 
+                <li class="page-item current-page"><a class="page-link" href="#">6</a></li> 
+                <li class="page-item dots"><a class="page-link" href="#">...</a></li> 
+                <li class="page-item current-page"><a class="page-link" href="#">10</a></li>
+                <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>  -->
+
             </div>
         </div>
-        <div class="pagination">
-            <!-- <li class="page-item previous-page disable"><a class="page-link" href="#">Prev</a></li> 
-            <li class="page-item current-page activee"><a class="page-link" href="#">1</a></li> 
-            <li class="page-item dots"><a class="page-link" href="#">...</a></li> 
-            <li class="page-item current-page"><a class="page-link" href="#">5</a></li> 
-            <li class="page-item current-page"><a class="page-link" href="#">6</a></li> 
-            <li class="page-item dots"><a class="page-link" href="#">...</a></li> 
-            <li class="page-item current-page"><a class="page-link" href="#">10</a></li>
-            <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>-->
-
-        </div>
-
         <script type="text/javascript">
         function getPageList(totalPages, page, maxLength){
             function range(start, end){
@@ -249,10 +264,10 @@
         }
 
         $(function(){
-            var numberOfItems = $(".portfolio-container .portfolio-box").length;
+            var numberOfItems = $(".card-content .card").length;
             var limitPerPage = 6; //How many card items visible per page
             var totalPages = Math.ceil(numberOfItems / limitPerPage);
-            var paginationSize = 7; //How many page elements visible in the pagination
+            var paginationSize = 3; //How many page elements visible in the pagination
             var currentPage;
 
             function showPage(whichPage){
@@ -260,13 +275,13 @@
 
                 currentPage = whichPage;
 
-                $(".portfolio-container .portfolio-box").hide().slice((currentPage - 1) * limitPerPage, currentPage * limitPerPage).show();
+                $(".card-content .card").hide().slice((currentPage - 1) * limitPerPage, currentPage * limitPerPage).show();
 
                 $(".pagination li").slice(1, -1).remove();
 
                 getPageList(totalPages, currentPage, paginationSize).forEach(item => {
                     $("<li>").addClass("page-item").addClass(item ? "current-page" : "dots")
-                    .toggleClass("activee", item === currentPage).append($("<a>").addClass("page-link")
+                    .toggleClass("prompt", item === currentPage).append($("<a>").addClass("page-link")
                     .attr({href: "javascript:void(0)"}).text(item || "...")).insertBefore(".next-page");
                 });
 
@@ -280,10 +295,10 @@
                 $("<li>").addClass("page-item").addClass("next-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Next"))
             );
 
-            $(".portfolio-box").show();
+            $(".card-content").show();
             showPage(1);
 
-            $(document).on("click", ".pagination li.current-page:not(.activee)", function(){
+            $(document).on("click", ".pagination li.current-page:not(.prompt)", function(){
                 return showPage(+$(this).text());
             });
 
@@ -296,6 +311,18 @@
             });
         });
         </script>
+    </section>
+
+    <!-- Data Analysis section  -->
+
+    <section class="analysis" id="analysis">
+        <h2 class="heading">Latest <span>Projects</span></h2>
+
+        <div class="analysis-container">
+            <div class="card-content">
+                <h3>Work in Progress</h3>
+            </div>
+        </div>      
     </section>
 
     <!-- contact section design -->
@@ -341,7 +368,6 @@
 
     <!-- custom js -->
     <script src="js/script.js"></script>
-
 </body>
 
 </html>

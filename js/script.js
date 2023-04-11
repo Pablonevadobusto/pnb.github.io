@@ -59,6 +59,6 @@ ScrollReveal({
 });
 
 ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
-ScrollReveal().reveal('.home-img img, .experience-container, .portfolio-box, .contact-form', { origin: 'bottom' });
+ScrollReveal().reveal('.home-img img, .experience-container, .card-content, .contact-form', { origin: 'bottom' });
 ScrollReveal().reveal('.home-content h1, .about-img img', { origin: 'left' });
 ScrollReveal().reveal('.home-content h3, .about-content p, .about-content', { origin: 'right' });
