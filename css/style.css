@@ -319,6 +319,10 @@ span {
     margin: 2rem 0 3em;
 }
 
+.dark-mode .about-content .image {
+    filter: invert(95%);
+}
+
 .experience {
     min-height: auto;
     padding-bottom: 25rem;
@@ -814,7 +818,7 @@ span {
     }
 
     .home {
-        padding: 0 3% 23rem;
+        padding: 0 3% 45rem;
         justify-content: center;
         text-align: center;
     }
@@ -840,7 +844,7 @@ span {
 
     .home .profession-container .profession-box {
         position: fixed;
-        top: 37%;
+        top: 12%;
         left: 0;
         border-radius: 0;
         width: 100%;
@@ -853,7 +857,7 @@ span {
     }
 
     .home .profession-box .profession:nth-child(1) {
-        transform: rotate(-90deg) translate(-100px, -240px);
+        transform: rotate(-90deg) translate(-100px, -100px);
     }
 
     .home .profession-box .profession:nth-child(1) i {
@@ -861,31 +865,31 @@ span {
     }
 
     .home .profession-box .profession:nth-child(2) {
-        transform: rotate(0deg) translate(0, -335px);
+        transform: rotate(0deg) translate(0, -195px);
     }
     
     .home .profession-box .profession:nth-child(3) {
-        transform: rotate(90deg) translate(-100px, -450px);
+        transform: rotate(90deg) translate(-100px, -312px);
     }
     
     .home .profession-box .profession:nth-child(4) {
-        transform: rotate(180deg) translate(-195px, -335px);
+        transform: rotate(180deg) translate(-195px, -200px);
     }
 
     .home .profession-box .circle {
         position: fixed;
-        width: 670px;
-        height: 670px;
+        width: 420px;
+        height: 420px;
         z-index: -1;
     }
 
     .home .profession-container .overlay {
         position: fixed;
-        top: 70rem;
+        top: 60rem;
         left: 50%;
         right: 0;
         transform: rotate(90deg) translate(-50%, 50%) scaleY(3);
-        border-width: 23.9rem;
+        border-width: 35.9rem;
     }
 
     .about {
@@ -916,7 +920,7 @@ span {
     }    
 }
 
-@media (max-width: 617px) {
+@media (max-width: 850px) {
     .portfolio .portfolio-container {
         grid-template-columns: 1fr;
     }
