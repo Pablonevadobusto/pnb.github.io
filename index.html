@@ -91,9 +91,9 @@
         <div class="about-content">
             <h2 class="heading">About <span>Me</span></h2>
             <h3>Hi, I am here to help YOU</h3>
-            <p>Proactive and highly motivated individual with a stellar track record of success in data analysis, data modelling, end-to-end ML building and deployment and problem solving with experience in designing cutting edge ML models/algorithims using python, GIT, AWS and SQL to solve business challenges.</p>
-			<p>After graduating with a Masters in Data Analytics from Manchester Metropolitan University, I officially became a Data Analyst. Then I had few years of priceless experience with some companies which cemented the knowledge I gathered. After about 3 years, I studied a bootcamp with The Developer Academy to grasp the fundamentals of Data Science.</p>
-			<p>Therefore, I am a Data Analyst and Graduate Data Scientist that is passionate about working with organisations that want to make data-driven decisions; from getting valuable insights from raw data and make it visual and usable for the audience to deploy interactive applications that run Machine Learning models into production.</p>
+            <p>Proactive and highly motivated individual with a stellar track record of success in data analysis, data modelling, Business Intelligence developing, end-to-end Machine Learning building and deployment, and problem solving with experience  using SQL, Python, Power BI, GIT and AWS to solve business challenges.</p>
+			<p>After graduating from a Masters in Data Analytics in Manchester Metropolitan University, I officially became a Data Analyst. Then I had about 3 years of priceless experience with some companies which cemented the knowledge I gathered. Then, I went further and studied a bootcamp with The Developer Academy to grasp the fundamentals of Data Science.</p>
+			<p>Therefore, I am a Data Analyst, Business Intelligence developer and Graduate Data Scientist that is passionate about working with organisations that want to make data-driven decisions.</p>
 			<p>Do you want to work together? Please reach out to me by any of the means of contact.</p>
             <div class="image"><img src="images/signature.png" alt="" width="300" /></div>
         </div>
@@ -415,7 +415,92 @@
                     </div>
                 </div>
             </div>
-        </div>      
+
+            <div class="analysis-pagination">
+                <!-- <li class="page-item analysis-previous-page analysis-disable"><a class="page-link" href="#">Prev</a></li> 
+                <li class="page-item analysis-current-page analysis-prompt"><a class="page-link" href="#">1</a></li> 
+                <li class="page-item dots"><a class="page-link" href="#">...</a></li> 
+                <li class="page-item analysis-current-page"><a class="page-link" href="#">5</a></li> 
+                <li class="page-item analysis-current-page"><a class="page-link" href="#">6</a></li> 
+                <li class="page-item dots"><a class="page-link" href="#">...</a></li> 
+                <li class="page-item analysis-current-page"><a class="page-link" href="#">10</a></li>
+                <li class="page-item analysis-next-page"><a class="page-link" href="#">Next</a></li>  -->
+
+            </div>
+        </div> 
+        <script type="text/javascript">
+            function getPageList(totalPages, page, maxLength){
+                function range(start, end){
+                    return Array.from(Array(end - start + 1), (_, i) => i + start);
+                }
+    
+                var sideWidth = maxLength < 9 ? 1 : 2;
+                var leftWidth = (maxLength - sideWidth * 2 - 3) >> 1;
+                var rightWidth = (maxLength - sideWidth * 2 - 3) >> 1;
+    
+                if(totalPages <= maxLength){
+                    return range(1, totalPages);
+                }
+    
+                if(page <= maxLength - sideWidth - 1 -rightWidth){
+                    return range(1, maxLength - sideWidth - 1).concat(0, range(totalPages - sideWidth + 1, totalPages));
+                }
+    
+                if(page >= totalPages - sideWidth - 1 - rightWidth){
+                    return range(1, sideWidth).concat(0, range(totalPages - sideWidth - 1 -rightWidth - leftWidth, totalPages));
+                }
+    
+                return range(1, sideWidth).concat(0, range(page - leftWidth, page + rightWidth), 0, range(totalPages - sideWidth + 1, totalPages));
+            }
+    
+            $(function(){
+                var numberOfItems = $(".analysis-card-content .analysis-card").length;
+                var limitPerPage = 6; //How many card items visible per page
+                var totalPages = Math.ceil(numberOfItems / limitPerPage);
+                var paginationSize = 3; //How many page elements visible in the pagination
+                var currentPage;
+    
+                function showPage(whichPage){
+                    if(whichPage < 1 || whichPage > totalPages)return false;
+    
+                    currentPage = whichPage;
+    
+                    $(".analysis-card-content .analysis-card").hide().slice((currentPage - 1) * limitPerPage, currentPage * limitPerPage).show();
+    
+                    $(".analysis-pagination li").slice(1, -1).remove();
+    
+                    getPageList(totalPages, currentPage, paginationSize).forEach(item => {
+                        $("<li>").addClass("page-item").addClass(item ? "analysis-current-page" : "dots")
+                        .toggleClass("analysis-prompt", item === currentPage).append($("<a>").addClass("page-link")
+                        .attr({href: "javascript:void(0)"}).text(item || "...")).insertBefore(".analysis-next-page");
+                    });
+    
+                    $(".analysis-previous-page").toggleClass("analysis-disable", currentPage === 1);
+                    $(".analysis-next-page").toggleClass("analysis-disable", currentPage === totalPages);
+                    return true;
+                }
+    
+                $(".analysis-pagination").append(
+                    $("<li>").addClass("page-item").addClass("analysis-previous-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Prev")),
+                    $("<li>").addClass("page-item").addClass("analysis-next-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Next"))
+                );
+    
+                $(".analysis-card-content").show();
+                showPage(1);
+    
+                $(document).on("click", ".analysis-pagination li.analysis-current-page:not(.analysis-prompt)", function(){
+                    return showPage(+$(this).text());
+                });
+    
+                $(".analysis-next-page").on("click", function(){
+                    return showPage(currentPage + 1); 
+                });
+                
+                $(".analysis-previous-page").on("click", function(){
+                    return showPage(currentPage - 1); 
+                });
+            });
+            </script>     
     </section>
 
     <!-- contact section design -->

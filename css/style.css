@@ -663,7 +663,55 @@ span {
     font-size: 2rem;
     color: #333;
 }
+.analysis-pagination {
+    text-align: center;
+    margin: 30px 30px 60px;
+    user-select: none;
+}
 
+.analysis-pagination li {
+    display: inline-block;
+    margin: 5px;
+    box-shadow: 0 5px 25px rgb(1 1 1 / 10%);
+}
+
+.analysis-pagination li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    line-height: 45px;
+}
+
+.analysis-previous-page, .analysis-next-page {
+    background: var(--main-color);
+    width: 80px;
+    border-radius: 45px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.analysis-previous-page:hover{
+    transform: translateX(-5px);
+}
+
+.analysis-next-page:hover{
+    transform: translateX(5px);
+}
+
+.analysis-current-page, .dots {
+    background: #ccc;
+    width: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.analysis-prompt {
+    background: var(--main-color);
+}
+
+.analysis-disable {
+    background: #ccc;
+}
 .contact h2 {
     margin-bottom: 3rem;
 }
