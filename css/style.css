@@ -1065,12 +1065,37 @@ span {
         padding: 0 3% 30rem;
     }
 
+    .home .profession-container {
+        top: 64%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .home .profession-container .profession-box {
+        position: fixed;
+        top: 12%;
+        left: 0;
+        border-radius: 0;
+        width: 100%;
+    }
+
+    .home .profession-box .profession {
+        padding: 0 13px;
+        left: auto;
+        transform-origin: 0;
+    }
+
     .home .profession-box .profession:nth-child(1) {
-        transform: rotate(-90deg) translate(-110px, -220px);
+        transform: rotate(-90deg) translate(-100px, -100px);
+    }
+    
+    .home .profession-box .profession:nth-child(1) i {
+        margin-right: 0;
     }
 
     .home .profession-box .profession:nth-child(2) {
-        transform: rotate(0deg) translate(5px, -335px);
+        transform: rotate(0deg) translate(-10px, -200px);
     }
 
     .home .profession-box .profession:nth-child(3) {
@@ -1079,6 +1104,22 @@ span {
 
     .home .profession-box .profession:nth-child(4) {
         transform: rotate(180deg) translate(-210px, -335px);
+    }
+
+    .home .profession-box .circle {
+        position: fixed;
+        width: 320px;
+        height: 320px;
+        z-index: -1;
+    }
+
+    .home .profession-container .overlay {
+        position: fixed;
+        top: 60rem;
+        left: 50%;
+        right: 0;
+        transform: rotate(90deg) translate(-50%, 50%) scaleY(3);
+        border-width: 35.9rem;
     }
 
     .contact form .input-box input {
