@@ -1,22 +1,57 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Portfolio Website Design | Codehal</title>
+    <meta name="description" content="Thank you for contacting Pablo Nevado-Busto.">
+    <title>Message Sent | Pablo Nevado-Busto</title>
+    <link rel="icon" type="image/png" href="images/profile.png">
 
+    <!-- box icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .success-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 10rem 3% 4rem;
+            gap: 1.5rem;
+        }
+
+        .success-section img {
+            width: min(400px, 80vw);
+            border-radius: 2rem;
+            margin: 1rem 0;
+        }
+
+        .success-section h2 {
+            font-size: 3.5rem;
+        }
+
+        .success-section p {
+            font-size: 1.6rem;
+            max-width: 60rem;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- contact section design -->
-    <section class="contact" id="contact">
+    <section class="success-section" id="contact">
         <h2>Thank you for contacting me!</h2>
-            <img src="images/thank-you.jpg" alt="">
+        <img src="images/thank-you.jpg" alt="Thank you for your message">
         <p>I read every message and typically respond within 48 hours if a reply is required.</p>
-        <p>Want to stay in touch? Connect on <a href="https://www.linkedin.com/in/pablo-nevado-busto-569605a8/" target="_blank">Linkedin!</a></p>
+        <p>Want to stay in touch? Connect on <a href="https://www.linkedin.com/in/pablo-nevado-busto-569605a8/" target="_blank" style="color: var(--main-color);">LinkedIn</a>!</p>
+        <a href="index.html" class="btn">Back to Home</a>
     </section>
 </body>
-</html>
 
+</html>

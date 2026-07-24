@@ -1,3 +1,7 @@
+/*======== footer year =======*/
+let yearEl = document.querySelector('#year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
 /*======== menu icon navbar =======*/
 let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
