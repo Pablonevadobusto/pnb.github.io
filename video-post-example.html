@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Prototype video post page for the Power BI section.">
+    <title>[Prototipo] Video Post | Pablo Nevado-Busto</title>
+    <link rel="icon" type="image/png" href="images/profile.png">
+
+    <!-- box icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .prototype-notice {
+            max-width: 90rem;
+            margin: 9rem auto 0;
+            padding: 0 3%;
+        }
+
+        .prototype-notice p {
+            font-size: 1.3rem;
+            color: var(--text-color);
+            opacity: .65;
+            text-align: center;
+            border: .1rem dashed var(--main-color);
+            border-radius: 1rem;
+            padding: .8rem 1.5rem;
+        }
+
+        .prototype-notice a {
+            color: var(--main-color);
+            font-weight: 600;
+        }
+
+        .post-header {
+            padding: 3rem 3% 1rem;
+            max-width: 90rem;
+            margin: 0 auto;
+        }
+
+        .post-header .tag {
+            display: inline-block;
+            background: var(--main-color);
+            color: var(--white-color);
+            font-weight: 600;
+            font-size: 1.3rem;
+            letter-spacing: .05rem;
+            padding: .4rem 1.4rem;
+            border-radius: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .post-header h1 {
+            font-size: 3.6rem;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .post-meta {
+            font-size: 1.4rem;
+            color: var(--text-color);
+            opacity: .7;
+        }
+
+        .video-wrap {
+            max-width: 90rem;
+            margin: 3rem auto;
+            padding: 0 3%;
+        }
+
+        .video-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 2rem;
+            overflow: hidden;
+            background: var(--bg-color);
+            border: .2rem solid var(--main-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 .5rem 2rem var(--shadow-color);
+        }
+
+        .video-frame .bx-play-circle {
+            font-size: 8rem;
+            color: var(--main-color);
+        }
+
+        .video-frame span {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.3rem;
+            opacity: .7;
+            text-align: center;
+        }
+
+        .post-article {
+            max-width: 78rem;
+            margin: 0 auto;
+            padding: 2rem 3% 5rem;
+            font-size: 1.6rem;
+            line-height: 1.8;
+        }
+
+        .post-article h2 {
+            font-size: 2.4rem;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .post-article p {
+            margin-bottom: 1.5rem;
+        }
+
+        .comments-section {
+            max-width: 78rem;
+            margin: 0 auto;
+            padding: 2rem 3% 6rem;
+        }
+
+        .comments-section h2 {
+            margin-bottom: .5rem;
+            text-align: left;
+            font-size: 2.4rem;
+        }
+
+        .comments-hint {
+            font-size: 1.3rem;
+            opacity: .65;
+            margin-bottom: 2.5rem;
+        }
+
+        .comment {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: .1rem solid var(--shadow-color);
+        }
+
+        .comment .avatar {
+            width: 4.5rem;
+            height: 4.5rem;
+            border-radius: 50%;
+            background: var(--main-color);
+            color: var(--white-color);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+
+        .comment .comment-author {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .comment .comment-date {
+            font-size: 1.2rem;
+            opacity: .6;
+            margin-left: .8rem;
+        }
+
+        .comment .comment-body {
+            font-size: 1.5rem;
+            margin-top: .3rem;
+        }
+
+        .comment-form {
+            margin-top: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .comment-form textarea {
+            width: 100%;
+            min-height: 8rem;
+            padding: 1.2rem;
+            border-radius: 1rem;
+            border: .1rem solid var(--shadow-color);
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-family: inherit;
+            font-size: 1.4rem;
+            resize: vertical;
+        }
+
+        .comment-form button {
+            align-self: flex-start;
+            cursor: not-allowed;
+            opacity: .6;
+        }
+
+        .comment-form button:hover {
+            background: var(--main-color);
+            color: var(--white-color);
+            border-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- header design (reused from index.html) -->
+    <header class="header sticky">
+        <a href="index.html" class="logo">Portfolio.</a>
+
+        <nav class="navbar">
+            <a href="index.html#analysis" class="active"><i class='bx bx-arrow-back'></i> Data Analysis</a>
+        </nav>
+
+        <div class="bx bx-moon" id="darkMode-icon" role="button" tabindex="0" aria-label="Toggle dark mode"></div>
+    </header>
+
+    <div class="prototype-notice">
+        <p>Prototipo de prueba — esta página todavía no está enlazada desde el menú principal. <a href="index.html">Volver al portfolio</a></p>
+    </div>
+
+    <header class="post-header">
+        <span class="tag">Power BI</span>
+        <h1>Cómo construí el dashboard de <span>[nombre del proyecto]</span></h1>
+        <div class="post-meta">Pablo Nevado-Busto · Fecha de ejemplo · 6 min de lectura</div>
+    </header>
+
+    <div class="video-wrap">
+        <div class="video-frame">
+            <i class='bx bx-play-circle'></i>
+            <span>Marcador de posición — aquí iría el vídeo embebido de YouTube (iframe)</span>
+        </div>
+    </div>
+
+    <article class="post-article">
+        <p>Este es un texto de ejemplo para probar el diseño de una futura página de "video post". La idea es acompañar cada vídeo con un escrito que explique el contexto, las decisiones tomadas y los aprendizajes del proyecto, tal y como se comentaría en el propio vídeo pero en formato texto para quien prefiera leer.</p>
+
+        <h2>Contexto del <span>proyecto</span></h2>
+        <p>Aquí iría una explicación del problema de negocio, el origen de los datos y el objetivo del análisis o del informe de Power BI mostrado en el vídeo.</p>
+
+        <h2>Qué se explica en el <span>vídeo</span></h2>
+        <p>Un resumen de los pasos cubiertos en el vídeo: modelado de datos, medidas DAX, diseño del dashboard, etc. También se podrían enlazar los timestamps más relevantes.</p>
+
+        <h2>Conclusiones</h2>
+        <p>Cierre con los resultados obtenidos y posibles siguientes pasos del proyecto.</p>
+    </article>
+
+    <section class="comments-section">
+        <h2>Comentarios</h2>
+        <p class="comments-hint">Maqueta visual — sin funcionalidad real todavía. Cuando decidas el sistema definitivo (por ejemplo, Giscus usando GitHub Discussions), se conecta aquí.</p>
+
+        <div class="comment">
+            <div class="avatar">A</div>
+            <div>
+                <span class="comment-author">Ana</span><span class="comment-date">hace 2 días</span>
+                <p class="comment-body">Comentario de ejemplo para ver cómo se vería el diseño de la sección.</p>
+            </div>
+        </div>
+        <div class="comment">
+            <div class="avatar">J</div>
+            <div>
+                <span class="comment-author">Jorge</span><span class="comment-date">hace 5 días</span>
+                <p class="comment-body">Otro comentario de muestra, con un poco más de texto para comprobar cómo se ajusta el espaciado.</p>
+            </div>
+        </div>
+
+        <div class="comment-form">
+            <textarea placeholder="Escribe un comentario... (deshabilitado en el prototipo)" disabled></textarea>
+            <button type="button" class="btn" disabled>Publicar</button>
+        </div>
+    </section>
+
+    <!-- footer design (reused from index.html) -->
+    <div class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; <span id="year"></span> by Pablo Nevado-Busto | All Rights Reserved.</p>
+        </div>
+
+        <div class="footer-iconTop">
+            <a href="#"><i class='bx bx-up-arrow-alt'></i></a>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('#year').textContent = new Date().getFullYear();
+
+        var darkModeIcon = document.querySelector('#darkMode-icon');
+        darkModeIcon.onclick = () => {
+            darkModeIcon.classList.toggle('bx-sun');
+            document.body.classList.toggle('dark-mode');
+        };
+    </script>
+</body>
+
+</html>
