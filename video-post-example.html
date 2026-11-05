@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="description" content="Prototype video post page for the Power BI section.">
-    <title>[Prototipo] Video Post | Pablo Nevado-Busto</title>
+    <meta name="description" content="Example video post page for the Blog section.">
+    <title>[Plantilla] Video Post | Pablo Nevado-Busto</title>
     <link rel="icon" type="image/png" href="images/profile.png">
 
     <!-- box icons -->
@@ -69,9 +69,14 @@
         }
 
         .video-wrap {
-            max-width: 90rem;
-            margin: 3rem auto;
-            padding: 0 3%;
+            max-width: 78rem;
+            margin: 1rem auto 3rem;
+            padding: 2rem 3% 5rem;
+        }
+
+        .video-wrap-heading {
+            font-size: 2.4rem;
+            margin-bottom: 1.5rem;
         }
 
         .video-frame {
@@ -206,6 +211,29 @@
             color: var(--white-color);
             border-color: transparent;
         }
+
+        /* This page has no hamburger menu (only one back link), so the
+           site-wide mobile rule that hides .navbar until toggled .active
+           would leave the back link unreachable — keep it visible instead. */
+        @media (max-width: 990px) {
+            .navbar {
+                display: block;
+                position: static;
+                width: auto;
+                padding: 0;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+            }
+
+            .navbar a {
+                display: inline-flex;
+                align-items: center;
+                gap: .5rem;
+                margin: 0;
+                font-size: 1.8rem;
+            }
+        }
     </style>
 </head>
 
@@ -216,14 +244,14 @@
         <a href="index.html" class="logo">Portfolio.</a>
 
         <nav class="navbar">
-            <a href="index.html#analysis" class="active"><i class='bx bx-arrow-back'></i> Data Analysis</a>
+            <a href="index.html#blog" class="active"><i class='bx bx-arrow-back'></i> Blog</a>
         </nav>
 
         <div class="bx bx-moon" id="darkMode-icon" role="button" tabindex="0" aria-label="Toggle dark mode"></div>
     </header>
 
     <div class="prototype-notice">
-        <p>Prototipo de prueba — esta página todavía no está enlazada desde el menú principal. <a href="index.html">Volver al portfolio</a></p>
+        <p>Plantilla de ejemplo para los posts del Blog — duplica esta página y sustituye el vídeo y el texto por los del proyecto real. <a href="index.html#blog">Volver al Blog</a></p>
     </div>
 
     <header class="post-header">
@@ -231,13 +259,6 @@
         <h1>Cómo construí el dashboard de <span>[nombre del proyecto]</span></h1>
         <div class="post-meta">Pablo Nevado-Busto · Fecha de ejemplo · 6 min de lectura</div>
     </header>
-
-    <div class="video-wrap">
-        <div class="video-frame">
-            <i class='bx bx-play-circle'></i>
-            <span>Marcador de posición — aquí iría el vídeo embebido de YouTube (iframe)</span>
-        </div>
-    </div>
 
     <article class="post-article">
         <p>Este es un texto de ejemplo para probar el diseño de una futura página de "video post". La idea es acompañar cada vídeo con un escrito que explique el contexto, las decisiones tomadas y los aprendizajes del proyecto, tal y como se comentaría en el propio vídeo pero en formato texto para quien prefiera leer.</p>
@@ -251,6 +272,14 @@
         <h2>Conclusiones</h2>
         <p>Cierre con los resultados obtenidos y posibles siguientes pasos del proyecto.</p>
     </article>
+
+    <div class="video-wrap">
+        <h2 class="video-wrap-heading">Mira el <span>vídeo</span></h2>
+        <div class="video-frame">
+            <i class='bx bx-play-circle'></i>
+            <span>Marcador de posición — aquí iría el vídeo embebido de mi canal de YouTube (iframe)</span>
+        </div>
+    </div>
 
     <section class="comments-section">
         <h2>Comentarios</h2>

@@ -29,8 +29,14 @@
             <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
             <a href="#experience">Experience</a>
-            <a href="#portfolio">Data Science</a>
-            <a href="#analysis">Data Analysis</a>
+            <div class="nav-item">
+                <a href="#portfolio" class="dropdown-toggle">Projects <i class='bx bx-chevron-down'></i></a>
+                <div class="dropdown-menu">
+                    <a href="#portfolio">Data Science</a>
+                    <a href="#analysis">Data Analysis</a>
+                </div>
+            </div>
+            <a href="#blog">Blog</a>
             <a href="#contact">Contact</a>
         </nav>
         <div class="bx bx-moon" id="darkMode-icon" role="button" tabindex="0" aria-label="Toggle dark mode"></div>
@@ -331,18 +337,6 @@
 
                 <div class="analysis-card" data-category="powerbi">
                     <div class="analysis-card-info">
-                        <h3>Video Post (preview)</h3>
-                    </div>
-                    <a href="video-post-example.html" class="analysis-card-image video-placeholder"><i class='bx bx-play-circle'></i></a>
-                    <div class="analysis-portfolio-layer">
-                        <p>Video walkthrough + write-up format — coming soon</p>
-                        <div class="div">
-                            <a href="video-post-example.html"><i class='bx bx-window-alt'></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="analysis-card" data-category="powerbi">
-                    <div class="analysis-card-info">
                         <h3>Students Analysis</h3>
                     </div>  
                     <div class="analysis-card-image"><img src="images/students_study.jpg" alt="Students exploratory data analysis project"></div>
@@ -486,7 +480,7 @@
             }
     
             $(function(){
-                var $allCards = $(".analysis-card-content .analysis-card");
+                var $allCards = $("#analysis .analysis-card-content .analysis-card");
                 var limitPerPage = 6; //How many card items visible per page
                 var paginationSize = 3; //How many page elements visible in the pagination
                 var currentPage;
@@ -527,7 +521,7 @@
                     $("<li>").addClass("page-item").addClass("analysis-next-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Next"))
                 );
 
-                $(".analysis-card-content").show();
+                $("#analysis .analysis-card-content").show();
                 showPage(1);
 
                 $(document).on("click", ".analysis-pagination li.analysis-current-page:not(.analysis-prompt)", function(){
@@ -551,6 +545,24 @@
                 });
             });
             </script>     
+    </section>
+
+    <!-- blog section design -->
+    <section class="blog-section" id="blog">
+        <h2 class="heading">My <span>Blog</span></h2>
+        <p class="blog-intro">Vídeos de YouTube sobre Power BI &amp; Microsoft Fabric, explicados paso a paso en formato artículo, con una sección de comentarios al final.</p>
+
+        <div class="blog-grid">
+            <a href="video-post-example.html" class="blog-card">
+                <div class="blog-card-image video-placeholder"><i class='bx bx-play-circle'></i></div>
+                <div class="blog-card-body">
+                    <span class="blog-tag">Power BI</span>
+                    <h3>Cómo construí este dashboard</h3>
+                    <p>El vídeo y el artículo que explican, paso a paso, el modelado de datos, las medidas DAX y las decisiones de diseño del informe.</p>
+                    <div class="blog-meta">Por Pablo Nevado-Busto &middot; Fecha de ejemplo &middot; 6 min de lectura</div>
+                </div>
+            </a>
+        </div>
     </section>
 
     <!-- contact section design -->

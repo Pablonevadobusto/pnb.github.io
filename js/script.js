@@ -11,6 +11,19 @@ menuIcon.onclick = () => {
     navbar.classList.toggle('active');
 };
 
+/*======== Projects dropdown =======*/
+let dropdownToggle = document.querySelector('.dropdown-toggle');
+let navItem = dropdownToggle ? dropdownToggle.closest('.nav-item') : null;
+
+if (dropdownToggle && navItem) {
+    dropdownToggle.onclick = (e) => {
+        if (window.innerWidth <= 990) {
+            e.preventDefault();
+            navItem.classList.toggle('open');
+        }
+    };
+}
+
 
 
 /*======== scroll sections active link =======*/
@@ -26,10 +39,14 @@ window.onscroll = () => {
         let id = sec.getAttribute('id');
 
         if(top >= offset && top < offset + height) {
-            navLinks.forEach(links => {
-                links.classList.remove('active');
-                document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
-            });
+            navLinks.forEach(links => links.classList.remove('active'));
+
+            if (id === 'portfolio' || id === 'analysis') {
+                if (dropdownToggle) dropdownToggle.classList.add('active');
+            } else {
+                let link = document.querySelector('header nav a[href*=' + id + ']');
+                if (link) link.classList.add('active');
+            }
         };
     });
 
@@ -43,6 +60,7 @@ header.classList.toggle('sticky', window.scrollY > 100);
 /*======== remove menu icon navbar when click navbar link (scroll)=======*/
 menuIcon.classList.remove('bx-x');
 navbar.classList.remove('active');
+if (navItem) navItem.classList.remove('open');
 
 };
 
