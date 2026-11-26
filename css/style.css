@@ -692,6 +692,10 @@ span {
     margin-bottom: 1.2rem;
 }
 
+.blog-tag + .blog-tag {
+    margin-left: .6rem;
+}
+
 .blog-card-body h3 {
     font-size: 2rem;
     line-height: 1.35;

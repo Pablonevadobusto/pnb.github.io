@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Why experienced Power BI developers almost always choose a Star Schema over a flat table, with a live performance benchmark in DAX Studio.">
+    <title>Star Schema Advantages in Power BI | Pablo Nevado-Busto</title>
+    <link rel="icon" type="image/png" href="images/profile.png">
+
+    <!-- box icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .lang-switch {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            max-width: 90rem;
+            margin: 9rem auto 0;
+            padding: 0 3%;
+        }
+
+        .lang-switch a,
+        .lang-switch span {
+            font-size: 1.3rem;
+            font-weight: 600;
+            padding: .5rem 1.4rem;
+            border-radius: 3rem;
+            border: .15rem solid var(--main-color);
+        }
+
+        .lang-switch span {
+            background: var(--main-color);
+            color: var(--white-color);
+        }
+
+        .lang-switch a {
+            color: var(--main-color);
+        }
+
+        .lang-switch a:hover {
+            background: rgba(237, 191, 43, .15);
+        }
+
+        .post-header {
+            padding: 2rem 3% 1rem;
+            max-width: 90rem;
+            margin: 0 auto;
+        }
+
+        .post-header .tag {
+            display: inline-block;
+            background: var(--main-color);
+            color: var(--white-color);
+            font-weight: 600;
+            font-size: 1.3rem;
+            letter-spacing: .05rem;
+            padding: .4rem 1.4rem;
+            border-radius: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .post-header h1 {
+            font-size: 3.6rem;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .post-meta {
+            font-size: 1.4rem;
+            color: var(--text-color);
+            opacity: .7;
+        }
+
+        .post-article {
+            max-width: 78rem;
+            margin: 0 auto;
+            padding: 2rem 3% 5rem;
+            font-size: 1.6rem;
+            line-height: 1.8;
+        }
+
+        .post-article h2 {
+            font-size: 2.4rem;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .post-article h3 {
+            font-size: 1.9rem;
+            margin: 1.8rem 0 .8rem;
+        }
+
+        .post-article p {
+            margin-bottom: 1.5rem;
+        }
+
+        .post-article ul {
+            margin: 0 0 1.5rem 2.2rem;
+        }
+
+        .post-article li {
+            margin-bottom: .6rem;
+        }
+
+        .post-article code {
+            background: rgba(237, 191, 43, .15);
+            padding: .15rem .5rem;
+            border-radius: .4rem;
+            font-size: .95em;
+        }
+
+        .post-article blockquote {
+            background: rgba(237, 191, 43, .08);
+            border-left: .3rem solid var(--main-color);
+            padding: 1.2rem 1.6rem;
+            border-radius: .6rem;
+            margin: 0 0 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .post-article table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 0 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .post-article th,
+        .post-article td {
+            padding: 1rem 1.5rem;
+            border: .1rem solid var(--shadow-color);
+            text-align: left;
+        }
+
+        .post-article th {
+            background: rgba(237, 191, 43, .12);
+        }
+
+        .video-wrap {
+            max-width: 78rem;
+            margin: 1rem auto 3rem;
+            padding: 2rem 3% 5rem;
+        }
+
+        .video-wrap-heading {
+            font-size: 2.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .video-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 2rem;
+            overflow: hidden;
+            background: var(--bg-color);
+            border: .2rem solid var(--main-color);
+            box-shadow: 0 .5rem 2rem var(--shadow-color);
+        }
+
+        .video-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .comments-section {
+            max-width: 78rem;
+            margin: 0 auto;
+            padding: 2rem 3% 6rem;
+        }
+
+        .comments-section h2 {
+            margin-bottom: .5rem;
+            text-align: left;
+            font-size: 2.4rem;
+        }
+
+        .comments-hint {
+            font-size: 1.3rem;
+            opacity: .65;
+            margin-bottom: 2.5rem;
+        }
+
+        .comment {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: .1rem solid var(--shadow-color);
+        }
+
+        .comment .avatar {
+            width: 4.5rem;
+            height: 4.5rem;
+            border-radius: 50%;
+            background: var(--main-color);
+            color: var(--white-color);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+
+        .comment .comment-author {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .comment .comment-date {
+            font-size: 1.2rem;
+            opacity: .6;
+            margin-left: .8rem;
+        }
+
+        .comment .comment-body {
+            font-size: 1.5rem;
+            margin-top: .3rem;
+        }
+
+        .comment-form {
+            margin-top: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .comment-form textarea {
+            width: 100%;
+            min-height: 8rem;
+            padding: 1.2rem;
+            border-radius: 1rem;
+            border: .1rem solid var(--shadow-color);
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-family: inherit;
+            font-size: 1.4rem;
+            resize: vertical;
+        }
+
+        .comment-form button {
+            align-self: flex-start;
+            cursor: not-allowed;
+            opacity: .6;
+        }
+
+        .comment-form button:hover {
+            background: var(--main-color);
+            color: var(--white-color);
+            border-color: transparent;
+        }
+
+        .comments-empty {
+            text-align: center;
+            padding: 3rem 1rem;
+            opacity: .6;
+        }
+
+        .comments-empty i {
+            display: block;
+            font-size: 3.5rem;
+            color: var(--main-color);
+            margin-bottom: 1rem;
+        }
+
+        .comments-empty p {
+            font-size: 1.5rem;
+        }
+
+        /* This page has no hamburger menu (only one back link), so the
+           site-wide mobile rule that hides .navbar until toggled .active
+           would leave the back link unreachable — keep it visible instead. */
+        @media (max-width: 990px) {
+            .navbar {
+                display: block;
+                position: static;
+                width: auto;
+                padding: 0;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+            }
+
+            .navbar a {
+                display: inline-flex;
+                align-items: center;
+                gap: .5rem;
+                margin: 0;
+                font-size: 1.8rem;
+            }
+
+            .lang-switch {
+                margin-top: 7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- header design (reused from index.html) -->
+    <header class="header sticky">
+        <a href="index.html" class="logo">Portfolio.</a>
+
+        <nav class="navbar">
+            <a href="index.html#blog" class="active"><i class='bx bx-arrow-back'></i> Blog</a>
+        </nav>
+
+        <div class="bx bx-moon" id="darkMode-icon" role="button" tabindex="0" aria-label="Toggle dark mode"></div>
+    </header>
+
+    <div class="lang-switch">
+        <span>🇬🇧 English</span>
+        <a href="ventajas-del-star-schema-en-power-bi.html">🇪🇸 Español</a>
+    </div>
+
+    <header class="post-header">
+        <span class="tag">Power BI</span>
+        <h1>⭐ Star Schema in Power BI: The Difference Between a Model That Works Today and One That Still Works a Year From Now</h1>
+        <div class="post-meta">Pablo Nevado-Busto · November 26, 2026 · 3 min read</div>
+    </header>
+
+    <article class="post-article">
+        <p>Have you ever opened a Power BI model and immediately thought: <em>"Who built this?"</em></p>
+        <p>A single giant table, hundreds of columns, measures getting more and more complicated... and it might work today. But <strong>what happens when the business grows?</strong></p>
+        <p>That's exactly why the <strong>Star Schema</strong> exists.</p>
+        <p>In this article, I'll explain what Star Schema is, why Microsoft recommends it for Power BI, and most importantly, why experienced developers almost always choose it over a flat table.</p>
+
+        <h2>🧱 The Problem: The Flat Table</h2>
+        <p>Many of us start the same way: a single table with everything inside. For small reports, <strong>it works perfectly</strong>.</p>
+        <p>The problem shows up when the business grows:</p>
+        <ul>
+            <li>The table gets wider and wider 📏</li>
+            <li>It becomes harder to understand 🤯</li>
+            <li>Every change feels risky ⚠️</li>
+            <li>Maintaining and scaling it gets really complicated</li>
+        </ul>
+        <p>It's a quick fix... that costs you later.</p>
+
+        <h2>⭐ What Is a Star Schema?</h2>
+        <p>Star Schema is a data modeling technique that splits your data into <strong>two types of tables</strong>:</p>
+
+        <h3>📊 Fact Table</h3>
+        <p>Contains measurable business events: sales, quantity, profit, discounts... It answers the question <strong>"what happened?"</strong></p>
+
+        <h3>🗂️ Dimension Tables</h3>
+        <p>Describe those facts: products, customers, dates, geography... They answer <strong>"who, what, when, where, how"</strong>.</p>
+
+        <p>Visually, a fact table in the middle surrounded by several dimensions resembles a star ⭐ — hence the name. It can have 5 dimensions or 20, depending on what the business needs.</p>
+
+        <h2>🚀 5 Advantages of Star Schema Over a Flat Table</h2>
+
+        <h3>1️⃣ Usability 🔍</h3>
+        <p>In a giant flat table, finding a column is like looking for a needle in a haystack. In a Star Schema, everything is organized: if you want customer information, you go straight to the <code>Dim Customer</code> table. Everyone knows where to look.</p>
+        <blockquote>💡 Tip: the <strong>"Dim"</strong> prefix marks a dimension table, and <strong>"Fact"</strong> marks a fact table.</blockquote>
+
+        <h3>2️⃣ DAX Simplicity 🧮</h3>
+        <p>Measures are written much more cleanly. A formula that takes <strong>a single line</strong> in a Star Schema model can become long, complex, and hard to read or maintain in a flat table.</p>
+
+        <h3>3️⃣ Maintainability 🔧</h3>
+        <p>Imagine the business decides to rename a value (say, a shipping class) that appears hundreds of times in the table.</p>
+        <ul>
+            <li><strong>Flat table:</strong> you have to find and change that value everywhere 😩</li>
+            <li><strong>Star Schema:</strong> you change it <strong>just once</strong> in the related dimension table, and it updates across the whole model ✅</li>
+        </ul>
+
+        <h3>4️⃣ Scalability 📈</h3>
+        <p>As the business grows, new processes — and new facts — tend to appear (shipments, purchases, inventory...). With Star Schema, you simply add new fact tables <strong>while reusing the same dimensions</strong>, instead of building one giant table every time. This is, in fact, how enterprise data warehouses are designed.</p>
+
+        <h3>5️⃣ Performance ⚡</h3>
+        <p>This is the ultimate proof. Comparing the query time for the same visual in DAX Studio:</p>
+        <table>
+            <thead>
+                <tr><th>Model</th><th>Query time</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>📋 Flat table</td><td>~2,000 ms</td></tr>
+                <tr><td>⭐ Star Schema</td><td>~331 ms</td></tr>
+            </tbody>
+        </table>
+        <p><strong>Up to 6x faster!</strong> 🏎️💨</p>
+
+        <h2>🏁 Conclusion</h2>
+        <p>Star Schema isn't just a "modeling recommendation" — it's a way of building Power BI models that stay <strong>understandable, efficient, maintainable, and scalable</strong>.</p>
+        <p>If you're serious about becoming a professional Power BI developer, <strong>mastering Star Schema is one of the best investments you can make</strong>. 🎯</p>
+
+        <p><em>Found this useful? Share it with someone who's still building their models on a single flat table.</em> 🙌</p>
+    </article>
+
+    <div class="video-wrap">
+        <h2 class="video-wrap-heading">Watch the <span>video</span></h2>
+        <div class="video-frame">
+            <iframe src="https://www.youtube.com/embed/HN3o57gKzzk" title="Star Schema Advantages in Power BI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="lazy" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <section class="comments-section">
+        <h2>Comments</h2>
+        <p class="comments-hint">Comments aren't live yet. Once a system is connected (e.g. Giscus via GitHub Discussions), you'll be able to join the conversation right here.</p>
+
+        <div class="comments-empty">
+            <i class='bx bx-message-rounded-dots'></i>
+            <p>No comments yet — be the first to share your thoughts!</p>
+        </div>
+
+        <div class="comment-form">
+            <textarea placeholder="Write a comment... (coming soon)" disabled></textarea>
+            <button type="button" class="btn" disabled>Post</button>
+        </div>
+    </section>
+
+    <!-- footer design (reused from index.html) -->
+    <div class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; <span id="year"></span> by Pablo Nevado-Busto | All Rights Reserved.</p>
+        </div>
+
+        <div class="footer-iconTop">
+            <a href="#"><i class='bx bx-up-arrow-alt'></i></a>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('#year').textContent = new Date().getFullYear();
+
+        var darkModeIcon = document.querySelector('#darkMode-icon');
+        darkModeIcon.onclick = () => {
+            darkModeIcon.classList.toggle('bx-sun');
+            document.body.classList.toggle('dark-mode');
+        };
+    </script>
+</body>
+
+</html>
