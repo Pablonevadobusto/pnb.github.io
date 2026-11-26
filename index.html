@@ -154,7 +154,7 @@
                         </div>
                             
                     </div>
-                    
+
                 </div>
                 <div class="card">
                     <div class="card-info">
@@ -563,6 +563,281 @@
                 </div>
             </a>
         </div>
+        <script type="text/javascript">
+        function getPageList(totalPages, page, maxLength){
+            function range(start, end){
+                return Array.from(Array(end - start + 1), (_, i) => i + start);
+            }
+
+            var sideWidth = maxLength < 9 ? 1 : 2;
+            var leftWidth = (maxLength - sideWidth * 2 - 3) >> 1;
+            var rightWidth = (maxLength - sideWidth * 2 - 3) >> 1;
+
+            if(totalPages <= maxLength){
+                return range(1, totalPages);
+            }
+
+            if(page <= maxLength - sideWidth - 1 -rightWidth){
+                return range(1, maxLength - sideWidth - 1).concat(0, range(totalPages - sideWidth + 1, totalPages));
+            }
+
+            if(page >= totalPages - sideWidth - 1 - rightWidth){
+                return range(1, sideWidth).concat(0, range(totalPages - sideWidth - 1 -rightWidth - leftWidth, totalPages));
+            }
+
+            return range(1, sideWidth).concat(0, range(page - leftWidth, page + rightWidth), 0, range(totalPages - sideWidth + 1, totalPages));
+        }
+
+        $(function(){
+            var numberOfItems = $(".card-content .card").length;
+            var limitPerPage = 6; //How many card items visible per page
+            var totalPages = Math.ceil(numberOfItems / limitPerPage);
+            var paginationSize = 3; //How many page elements visible in the pagination
+            var currentPage;
+
+            function showPage(whichPage){
+                if(whichPage < 1 || whichPage > totalPages)return false;
+
+                currentPage = whichPage;
+
+                $(".card-content .card").hide().slice((currentPage - 1) * limitPerPage, currentPage * limitPerPage).show();
+
+                $(".pagination li").slice(1, -1).remove();
+
+                getPageList(totalPages, currentPage, paginationSize).forEach(item => {
+                    $("<li>").addClass("page-item").addClass(item ? "current-page" : "dots")
+                    .toggleClass("prompt", item === currentPage).append($("<a>").addClass("page-link")
+                    .attr({href: "javascript:void(0)"}).text(item || "...")).insertBefore(".next-page");
+                });
+
+                $(".previous-page").toggleClass("disable", currentPage === 1);
+                $(".next-page").toggleClass("disable", currentPage === totalPages);
+                return true;
+            }
+
+            $(".pagination").append(
+                $("<li>").addClass("page-item").addClass("previous-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Prev")),
+                $("<li>").addClass("page-item").addClass("next-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Next"))
+            );
+
+            $(".card-content").show();
+            showPage(1);
+
+            $(document).on("click", ".pagination li.current-page:not(.prompt)", function(){
+                return showPage(+$(this).text());
+            });
+
+            $(".next-page").on("click", function(){
+                return showPage(currentPage + 1); 
+            });
+            
+            $(".previous-page").on("click", function(){
+                return showPage(currentPage - 1); 
+            });
+        });
+        </script>
+    </section>
+
+    <!-- Data Analysis section  -->
+
+    <section class="analysis" id="analysis">
+        <h2 class="heading">Latest <span>Projects</span></h2>
+
+        <div class="analysis-container">
+            <div class="analysis-card-content">
+                
+                <div class="analysis-card">
+                    <div class="analysis-card-info">
+                        <h3>Students Analysis</h3>
+                    </div>  
+                    <div class="analysis-card-image"><img src="images/students_study.jpg" alt="Students exploratory data analysis project"></div>
+                    <div class="analysis-portfolio-layer">
+                        <p>Exploratory Data Analysis on Students</p>
+                        <div class="div">
+                            <a style="margin: 0 1rem 0 0"href="https://github.com/Pablonevadobusto/Students" target="_blank"><i class='bx bx-link-external'></i></a>
+                            <a href="https://app.powerbi.com/view?r=eyJrIjoiODBkNzkzZGQtYjRiZC00NDc3LTg5M2YtNWM2NjRjYjk0NTY1IiwidCI6IjEyZWU2MDZjLWU5ZjAtNDJkMy04MmMwLTcyMjAwNDNmOTNmMiJ9"target="_blank"><i class='bx bx-window-alt'></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="analysis-card">
+                    <div class="analysis-card-info">
+                        <h3>Power BI USA Crimes</h3>
+                    </div>  
+                    <div class="analysis-card-image"><img src="images/USA.png" alt="Power BI USA crimes report"></div>
+                    <div class="analysis-portfolio-layer">
+                        <p>Crimes in USA report with Power BI</p>
+                        <div class="div">
+                            <a style="margin: 0 1rem 0 0"href="https://github.com/Pablonevadobusto/USACrimes" target="_blank"><i class='bx bx-link-external'></i></a>
+                            <a href="https://app.powerbi.com/view?r=eyJrIjoiZDQwYzM1NDQtNDBlZi00ZWZlLWE1NTktNzRiNDU3YzEzMjBlIiwidCI6IjEyZWU2MDZjLWU5ZjAtNDJkMy04MmMwLTcyMjAwNDNmOTNmMiJ9"target="_blank"><i class='bx bx-window-alt'></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analysis-card">
+                    <div class="analysis-card-info">
+                        <h3>Power BI Human Resources</h3>
+                    </div>  
+                    <div class="analysis-card-image"><img src="images/HR.jpg" alt="Power BI human resources report"></div>
+                    <div class="analysis-portfolio-layer">
+                        <p>Human Resources report with Power BI and SQL</p>
+                        <div class="div">
+                            <a style="margin: 0 1rem 0 0"href="https://github.com/Pablonevadobusto/HumanResources" target="_blank"><i class='bx bx-link-external'></i></a>
+                            <a href="https://app.powerbi.com/view?r=eyJrIjoiMDcwYmYxN2YtNGU2My00MjRjLTk4YWQtMzJmYTRmODYyNzdmIiwidCI6IjEyZWU2MDZjLWU5ZjAtNDJkMy04MmMwLTcyMjAwNDNmOTNmMiJ9"target="_blank"><i class='bx bx-window-alt'></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analysis-card">
+                    <div class="analysis-card-info">
+                        <h3>Power BI Premier League</h3>
+                    </div>  
+                    <div class="analysis-card-image"><img src="images/PL.png" alt="Power BI Premier League standings report"></div>
+                    <div class="analysis-portfolio-layer">
+                        <p>Premier League Standings with Power BI</p>
+                        <div class="div">
+                            <a style="margin: 0 1rem 0 0"href="https://github.com/Pablonevadobusto/PremierLeagueStandings" target="_blank"><i class='bx bx-link-external'></i></a>
+                            <a href="https://app.powerbi.com/view?r=eyJrIjoiOTQzYmI3OGQtNmE3MC00N2ViLWE1NTgtOTEyYjRkMjI5YzhiIiwidCI6IjEyZWU2MDZjLWU5ZjAtNDJkMy04MmMwLTcyMjAwNDNmOTNmMiJ9"target="_blank"><i class='bx bx-window-alt'></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analysis-card">
+                    <div class="analysis-card-info">
+                        <h3>SQL Customer Segmentation</h3>
+                    </div>  
+                    <div class="analysis-card-image"><img src="images/Customer-Segmentation.jpg" alt="SQL customer segmentation project"></div>
+                    <div class="analysis-portfolio-layer">
+                        <p>SQL Customer Segmentation with Online Retail Company</p>
+                        <div class="div">
+                            <a href="https://github.com/Pablonevadobusto/SQLCustomerSegmentation" target="_blank"><i class='bx bx-link-external'></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analysis-card">
+                    <div class="analysis-card-info">
+                        <h3>SQL Data Analysis & Data Cleaning</h3>
+                    </div>  
+                    <div class="analysis-card-image"><img src="images/cleaning.jpg" alt="SQL data analysis and data cleaning project"></div>
+                    <div class="analysis-portfolio-layer">
+                        <p>Data analysis & Data cleaning with SQL and Python</p>
+                        <div class="div">
+                            <a href="https://github.com/Pablonevadobusto/Analysis" target="_blank"><i class='bx bx-link-external'></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="analysis-card">
+                    <div class="analysis-card-info">
+                        <h3>Power BI A/B Test Analysis</h3>
+                    </div>  
+                    <div class="analysis-card-image"><img src="images/gambling.jpg" alt="Power BI A/B test analysis project"></div>
+                    <div class="analysis-portfolio-layer">
+                        <p>Data Analysis of a Gambling company to determine whether the campaign is producing results or not</p>
+                        <div class="div">
+                            <a href="https://github.com/Pablonevadobusto/Gambling" target="_blank"><i class='bx bx-link-external'></i></a>
+                        </div>    
+                    </div>
+                </div>
+                <div class="analysis-card">
+                    <div class="analysis-card-info">
+                        <h3>SQL mini project</h3>
+                    </div>  
+                    <div class="analysis-card-image"><img src="images/sql.png" alt="SQL mini project"></div>
+                    <div class="analysis-portfolio-layer">
+                        <p>Simple SQL project with some business questions to solve</p>
+                        <div class="div">
+                            <a href="https://github.com/Pablonevadobusto/Zomato-SQL" target="_blank"><i class='bx bx-link-external'></i></a>
+                        </div>
+                            
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-pagination">
+                <!-- <li class="page-item analysis-previous-page analysis-disable"><a class="page-link" href="#">Prev</a></li> 
+                <li class="page-item analysis-current-page analysis-prompt"><a class="page-link" href="#">1</a></li> 
+                <li class="page-item dots"><a class="page-link" href="#">...</a></li> 
+                <li class="page-item analysis-current-page"><a class="page-link" href="#">5</a></li> 
+                <li class="page-item analysis-current-page"><a class="page-link" href="#">6</a></li> 
+                <li class="page-item dots"><a class="page-link" href="#">...</a></li> 
+                <li class="page-item analysis-current-page"><a class="page-link" href="#">10</a></li>
+                <li class="page-item analysis-next-page"><a class="page-link" href="#">Next</a></li>  -->
+
+            </div>
+        </div> 
+        <script type="text/javascript">
+            function getPageList(totalPages, page, maxLength){
+                function range(start, end){
+                    return Array.from(Array(end - start + 1), (_, i) => i + start);
+                }
+    
+                var sideWidth = maxLength < 9 ? 1 : 2;
+                var leftWidth = (maxLength - sideWidth * 2 - 3) >> 1;
+                var rightWidth = (maxLength - sideWidth * 2 - 3) >> 1;
+    
+                if(totalPages <= maxLength){
+                    return range(1, totalPages);
+                }
+    
+                if(page <= maxLength - sideWidth - 1 -rightWidth){
+                    return range(1, maxLength - sideWidth - 1).concat(0, range(totalPages - sideWidth + 1, totalPages));
+                }
+    
+                if(page >= totalPages - sideWidth - 1 - rightWidth){
+                    return range(1, sideWidth).concat(0, range(totalPages - sideWidth - 1 -rightWidth - leftWidth, totalPages));
+                }
+    
+                return range(1, sideWidth).concat(0, range(page - leftWidth, page + rightWidth), 0, range(totalPages - sideWidth + 1, totalPages));
+            }
+    
+            $(function(){
+                var numberOfItems = $(".analysis-card-content .analysis-card").length;
+                var limitPerPage = 6; //How many card items visible per page
+                var totalPages = Math.ceil(numberOfItems / limitPerPage);
+                var paginationSize = 3; //How many page elements visible in the pagination
+                var currentPage;
+    
+                function showPage(whichPage){
+                    if(whichPage < 1 || whichPage > totalPages)return false;
+    
+                    currentPage = whichPage;
+    
+                    $(".analysis-card-content .analysis-card").hide().slice((currentPage - 1) * limitPerPage, currentPage * limitPerPage).show();
+    
+                    $(".analysis-pagination li").slice(1, -1).remove();
+    
+                    getPageList(totalPages, currentPage, paginationSize).forEach(item => {
+                        $("<li>").addClass("page-item").addClass(item ? "analysis-current-page" : "dots")
+                        .toggleClass("analysis-prompt", item === currentPage).append($("<a>").addClass("page-link")
+                        .attr({href: "javascript:void(0)"}).text(item || "...")).insertBefore(".analysis-next-page");
+                    });
+    
+                    $(".analysis-previous-page").toggleClass("analysis-disable", currentPage === 1);
+                    $(".analysis-next-page").toggleClass("analysis-disable", currentPage === totalPages);
+                    return true;
+                }
+    
+                $(".analysis-pagination").append(
+                    $("<li>").addClass("page-item").addClass("analysis-previous-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Prev")),
+                    $("<li>").addClass("page-item").addClass("analysis-next-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Next"))
+                );
+    
+                $(".analysis-card-content").show();
+                showPage(1);
+    
+                $(document).on("click", ".analysis-pagination li.analysis-current-page:not(.analysis-prompt)", function(){
+                    return showPage(+$(this).text());
+                });
+    
+                $(".analysis-next-page").on("click", function(){
+                    return showPage(currentPage + 1); 
+                });
+                
+                $(".analysis-previous-page").on("click", function(){
+                    return showPage(currentPage - 1); 
+                });
+            });
+            </script>     
     </section>
 
     <!-- contact section design -->
