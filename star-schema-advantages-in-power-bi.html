@@ -258,6 +258,23 @@
             border-color: transparent;
         }
 
+        .comments-empty {
+            text-align: center;
+            padding: 3rem 1rem;
+            opacity: .6;
+        }
+
+        .comments-empty i {
+            display: block;
+            font-size: 3.5rem;
+            color: var(--main-color);
+            margin-bottom: 1rem;
+        }
+
+        .comments-empty p {
+            font-size: 1.5rem;
+        }
+
         /* This page has no hamburger menu (only one back link), so the
            site-wide mobile rule that hides .navbar until toggled .active
            would leave the back link unreachable — keep it visible instead. */
@@ -387,25 +404,15 @@
 
     <section class="comments-section">
         <h2>Comments</h2>
-        <p class="comments-hint">Visual mock-up only — not wired up yet. Once a system is chosen (e.g. Giscus via GitHub Discussions), it will be connected here.</p>
+        <p class="comments-hint">Comments aren't live yet. Once a system is connected (e.g. Giscus via GitHub Discussions), you'll be able to join the conversation right here.</p>
 
-        <div class="comment">
-            <div class="avatar">A</div>
-            <div>
-                <span class="comment-author">Ana</span><span class="comment-date">2 days ago</span>
-                <p class="comment-body">Sample comment to preview how the section looks.</p>
-            </div>
-        </div>
-        <div class="comment">
-            <div class="avatar">J</div>
-            <div>
-                <span class="comment-author">Jorge</span><span class="comment-date">5 days ago</span>
-                <p class="comment-body">Another sample comment, a bit longer, to check how the spacing adjusts.</p>
-            </div>
+        <div class="comments-empty">
+            <i class='bx bx-message-rounded-dots'></i>
+            <p>No comments yet — be the first to share your thoughts!</p>
         </div>
 
         <div class="comment-form">
-            <textarea placeholder="Write a comment... (disabled in this preview)" disabled></textarea>
+            <textarea placeholder="Write a comment... (coming soon)" disabled></textarea>
             <button type="button" class="btn" disabled>Post</button>
         </div>
     </section>
